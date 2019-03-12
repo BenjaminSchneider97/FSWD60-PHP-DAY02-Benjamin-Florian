@@ -11,7 +11,7 @@
 	$browser = "An unidentified browser";
 	if( preg_match( "/MSIE/i", "$viewer" ) )
 	{
-	$browser = "Internet Explorer";
+	echo $browser = "Internet Explorer";
 	}
 	else if( preg_match( "/Netscape/i", "$viewer" ) )
 	{
@@ -19,7 +19,7 @@
 	}
 	elseif(preg_match('/Chrome/i', "$viewer"))
 	{
-	$browser = 'Google Chrome';
+	echo $browser = 'Google Chrome';
 	?>
 	<style>
 	<?php include 'chrome.css'; ?>
