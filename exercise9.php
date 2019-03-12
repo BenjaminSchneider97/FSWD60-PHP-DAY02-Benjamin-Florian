@@ -15,13 +15,7 @@
 
 
 
-	<form method="get">
-	   <p>
-	       <label for="name">Name:</label>
-	       <input type="text" name="name" id="name">
-	       <input type="submit" name="update" value="update">
-	   </p>
-	</form>
+	
 
 
 	<?php
@@ -34,7 +28,7 @@
 		$sql = "SELECT user_id, name FROM `user`";
 		   $result = mysqli_query($conn, $sql);
 		   while($row = mysqli_fetch_assoc($result)) {
-		       printf("ID= %s Name= %s <a href='exercise9.php?id=%s'>edit</a><br>",
+		       printf("ID= %s Name= %s <button><a href='exercise9.php?id=%s'>edit</a></button><br>",
 		           $row["user_id"], $row["name"],$row["user_id"]);
 		   }
 		   mysqli_free_result($result);
@@ -58,14 +52,27 @@
 			$row = mysqli_fetch_assoc($res);
 
 			echo "firstname :" . $row["name"];
-			/*$name = mysqli_real_escape_string($conn, $_POST['name']);
-			$sql = "UPDATE `user` SET name='$name' WHERE user_id=1"; 
+		}
+		?>
+	<form action="exercise9.php" method="POST">
+	   <p>
+	       <label for="name">Name:</label>
+	       <?php 
+	       echo'<input type="text" name="newname" id="name" value="'. $row['name'].'">';
+	       ?>
+	       <input type="submit" name="update" value="update">
+	   </p>
+	</form>
+		<?php
+		if (isset($_POST["update"])){
+			$name = mysqli_real_escape_string($conn, $_POST['newname']);
+			$sql = "UPDATE `user` SET name = '$name' WHERE user_id = $id"; 
 			if (mysqli_query($conn, $sql)) {
 			   echo "<h1>record updated.<h1>";
 			} else {
 			   echo "<h1>Update error for: </h1>" . 
 			         "<p>" . $sql . "</p>" . mysqli_error($conn);
-				}*/
+				}	
 		}
 	?>
 </body>
