@@ -12,12 +12,6 @@
 	       <input type="submit" name="submit" value="submit">
 	   </p>
 	</form>
-
-
-
-	
-
-
 	<?php
 	    $servername = "localhost";
 	    $username = "root";
@@ -59,12 +53,14 @@
 	       <label for="name">Name:</label>
 	       <?php 
 	       echo'<input type="text" name="newname" id="name" value="'. $row['name'].'">';
+	       echo'<input type="hidden" name="id" id="name" value="'. $row['user_id'].'">';
 	       ?>
 	       <input type="submit" name="update" value="update">
 	   </p>
 	</form>
 		<?php
 		if (isset($_POST["update"])){
+			$id= $_POST["id"];
 			$name = mysqli_real_escape_string($conn, $_POST['newname']);
 			$sql = "UPDATE `user` SET name = '$name' WHERE user_id = $id"; 
 			if (mysqli_query($conn, $sql)) {
