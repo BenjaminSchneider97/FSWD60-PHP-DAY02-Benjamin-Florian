@@ -6,8 +6,8 @@
 </head>
 <body>
 	<form action="exercise3.php" method="POST">
-		<input type="text" name="first_number" placeholder="First Number">
-		<input type="text" name="divisor" placeholder="Divisor">
+		<input type="number" name="first_number" placeholder="First Number">
+		<input type="number" name="divisor" placeholder="Divisor">
 		<input type="submit" name="submit">
 	</form>
 
